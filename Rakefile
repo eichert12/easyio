@@ -5,14 +5,15 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "easyio"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = "A gem for making IO tasks easy (at least for me)"
+    gem.description = "A gem for making IO tasks easy (at least for me)"
     gem.email = "steve.eichert@gmail.com"
     gem.homepage = "http://github.com/eichert12/easyio"
-    gem.authors = ["Steve"]
-    gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.authors = ["Steve Eichert"]
+    gem.add_development_dependency "faster_csv", ">= 1.5.0"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
+  Jeweler::GemcutterTasks
 rescue LoadError
   puts "Jeweler (or a dependency) not available. Install it with: sudo gem install jeweler"
 end
