@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
      "VERSION",
      "easyio.gemspec",
      "lib/easyio.rb",
+     "test/easyio.rb",
      "test/helper.rb"
   ]
   s.homepage = %q{http://github.com/eichert12/easyio}
