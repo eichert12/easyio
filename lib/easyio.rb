@@ -2,7 +2,7 @@ require 'fastercsv'
 
 class EasyIO
   DefaultOptions = { :col_sep => ",", :headers => true, :header_converters => :symbol }
-  DefaultSource = ENV["RAILS_ENV"] == "production" ? :s3 : :file_system
+  DefaultSource = defined?(RAILS_ENV) && RAILS_ENV == "production" ? :s3 : :file_system
   
   def self.default_s3_bucket(bucket)
     @default_bucket = bucket
