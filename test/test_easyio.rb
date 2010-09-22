@@ -26,4 +26,15 @@ class TestEasyio < Test::Unit::TestCase
       assert_equal EasyIO.get_s3_bucket, "foobar"
     end
   end
+
+  context "parse" do
+    should "yield each row" do
+      csv = "first,second,third\n1,2,3"
+      EasyIO.parse(csv) do |row|
+        assert_equal row[:first], "1"
+        assert_equal row[:second], "2"
+        assert_equal row[:third], "3"
+      end
+    end
+  end
 end

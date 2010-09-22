@@ -18,7 +18,7 @@ class EasyIO
 
   def self.open_csv(file, options = {})
     FasterCSV.open(file, default_options(options)) { |csv| yield csv }
-  end  
+  end
   
   def self.file_source(options = {})
     options.delete(:source) || DefaultSource
@@ -42,6 +42,12 @@ class EasyIO
           yield row
         end
       end
+    end
+  end
+
+  def self.parse(string, options = {})
+    FasterCSV.parse(string, default_options(options)) do |row|
+      yield row
     end
   end
     
