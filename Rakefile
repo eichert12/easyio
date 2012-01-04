@@ -10,9 +10,7 @@ begin
     gem.email = "steve.eichert@gmail.com"
     gem.homepage = "http://github.com/eichert12/easyio"
     gem.authors = ["Steve Eichert"]
-    gem.add_runtime_dependency "fastercsv", ">= 1.5.0"
     gem.add_runtime_dependency "aws-s3", ">= 0.6.2"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
@@ -39,11 +37,9 @@ rescue LoadError
   end
 end
 
-task :test => :check_dependencies
-
 task :default => :test
 
-require 'rake/rdoctask'
+require 'rdoc/task'
 Rake::RDocTask.new do |rdoc|
   version = File.exist?('VERSION') ? File.read('VERSION') : ""
 

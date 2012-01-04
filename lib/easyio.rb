@@ -1,8 +1,8 @@
-require 'fastercsv'
+require 'csv'
 
 class EasyIO
   DefaultOptions = { :col_sep => ",", :headers => true, :header_converters => :symbol }
-  DefaultSource = defined?(RAILS_ENV) && RAILS_ENV == "production" ? :s3 : :file_system
+  DefaultSource = defined?(Rails.env) && Rails.env == "production" ? :s3 : :file_system
   
   def self.default_s3_bucket(bucket)
     @default_bucket = bucket
@@ -13,11 +13,11 @@ class EasyIO
   end
 
   def self.write_csv(file)
-    FasterCSV.open(file, "w") { |csv| yield csv }
+    CSV.open(file, "w") { |csv| yield csv }
   end
 
   def self.open_csv(file, options = {})
-    FasterCSV.open(file, default_options(options)) { |csv| yield csv }
+    CSV.open(file, default_options(options)) { |csv| yield csv }
   end
   
   def self.file_source(options = {})
@@ -31,7 +31,7 @@ class EasyIO
       url = AWS::S3::S3Object.url_for(file, get_s3_bucket(options))
       open(url) do |f|
         f.each_line do |line|
-          FasterCSV.parse(line, default_options(options)) do |row|
+          CSV.parse(line, default_options(options)) do |row|
             yield row
           end
         end
@@ -46,7 +46,7 @@ class EasyIO
   end
 
   def self.parse(string, options = {})
-    FasterCSV.parse(string, default_options(options)) do |row|
+    CSV.parse(string, default_options(options)) do |row|
       yield row
     end
   end

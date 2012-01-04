@@ -1,6 +1,8 @@
 = easyio
 
-Description goes here.
+A simple library for making working with CSV files slightly easier by wrapping up default options and providing a few simple helper methods.
+
+Note: Version 0.3 and above require Ruby 1.9+, for 1.8 compatibility use Version 0.2
 
 == Note on Patches/Pull Requests
  
@@ -12,7 +14,3 @@ Description goes here.
   (if you want to have your own version, that is fine but
    bump version in a commit by itself I can ignore when I pull)
 * Send me a pull request. Bonus points for topic branches.
-
-== Copyright
-
-Copyright (c) 2009 Steve. See LICENSE for details.
