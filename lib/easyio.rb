@@ -12,8 +12,8 @@ class EasyIO
     File.open(file, "w") { |f| yield f }
   end
 
-  def self.write_csv(file)
-    CSV.open(file, "w") { |csv| yield csv }
+  def self.write_csv(file, options = {})
+    CSV.open(file, "w", options) { |csv| yield csv }
   end
 
   def self.open_csv(file, options = {})
